@@ -1,12 +1,10 @@
-OKEX Module Repository
+OKEX API SDK
 ========================
 
-This okex project is an example repo for Python projects.
-
-`Learn more <http://www.kennethreitz.org/essays/repository-structure-and-python>`_.
+这是比特币交易平台 okex 的 API for Python 版.
 
 ---------------
 
-If you want to learn more about ``setup.py`` files, check out `this repository <https://github.com/kennethreitz/setup.py>`_.
+文档后续更新中...
 
 ✨🍰✨

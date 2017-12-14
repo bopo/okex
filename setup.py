@@ -14,7 +14,7 @@ with open('LICENSE') as f:
 setup(
     name='okex',
     version='0.1.0',
-    description='OKEX API Client',
+    description='OKEX API SDK',
     long_description=readme,
     author='Bopo Wang',
     author_email='ibopo@126.com',
