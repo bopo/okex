@@ -6,6 +6,5 @@ OKEX API SDK
 ---------------
 
 文档后续更新中...
-export SECRET='31F73BBC196B0472DFFFFAA215F22B45'
-export APIKEY='0b72f8d4-b5dd-4b0c-b8d6-7c55c8405799'
+
 ✨🍰✨
