@@ -56,6 +56,8 @@ class MarketTestSuite(unittest.TestCase):
     def test_future_price_limit(self):
         assert self.client.future_price_limit(symbol='btc_usd', contract_type='this_week')
 
+        client.future(method='hold_amount', symbol='btc_usd', contract_type='this_week')
+        client.spot(method='', params=None)
 
 if __name__ == '__main__':
     unittest.main()

@@ -5,19 +5,19 @@ TYPES = ('1min', '3min', '5min', '15min', '30min', '1day', '3day', '1week', '1ho
          '4hour', '6hour', '12hour')
 
 ENDPOINT = {
-    'ticker': '/api/v1/{}ticker.do',
-    'depth': '/api/v1/{}depth.do',
-    'kline': '/api/v1/{}kline.do',
-    'trades': '/api/v1/{}trades.do',
-    'index': '/api/v1/future_index.do',
-    'exchange_rate': '/api/v1/exchange_rate.do',
+    'ticker': ('/api/v1/{}ticker.do', 'get'),
+    'depth': ('/api/v1/{}depth.do', 'get'),
+    'kline': ('/api/v1/{}kline.do', 'get'),
+    'trades': ('/api/v1/{}trades.do', 'get'),
+    'index': ('/api/v1/future_index.do', 'get'),
+    'exchange_rate': ('/api/v1/exchange_rate.do', 'post'),
     'estimated_price': '/api/v1/future_estimated_price.do',
     'hold_amount': '/api/v1/future_hold_amount.do',
     'price_limit': '/api/v1/future_price_limit.do',
     'user_info': '/api/v1/{}userinfo.do',
     'position': '/api/v1/future_position.do',
     'trades_history': '/api/v1/future_trades_history.do',
-    'batch_trade': '/api/v1/future_batch_trade.do',
+    'batch_trade': '/api/v1/{}batch_trade.do',
     'cancel': '/api/v1/future_cancel.do',
     'order_info': '/api/v1/future_order_info.do',
     'orders_info': '/api/v1/future_orders_info.do',
@@ -26,7 +26,10 @@ ENDPOINT = {
     'explosive': '/api/v1/future_explosive.do',
     'withdraw': '/api/v1/withdraw.do',
     'cancel_withdraw': '/api/v1/cancel_withdraw.do',
-    'withdraw_info': '/api/v1/withdraw_info.do'
+    'withdraw_info': '/api/v1/withdraw_info.do',
+    'account_records': '/api/v1/account_records.do',
+    'order_history': '/api/v1/order_history.do',
+    'cancel_order': '/api/v1/cancel_order.do'
 }
 
 # 错误代码（现货）

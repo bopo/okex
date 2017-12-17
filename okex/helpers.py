@@ -9,7 +9,7 @@ import requests
 
 class Request(object):
 
-    def __init__(self, host=None, key=None):
+    def __init__(self, host=None, apikey=None, secret=None):
         """
         Constructor for class of HttpsRequest.
         :param url: Base URL for the Request methods
@@ -17,7 +17,8 @@ class Request(object):
         """
         host = 'https://www.okex.com' if host is None else host.rstrip('/')
         self.__url = host
-        self.__key = key
+        self.apikey = apikey
+        self.secret = secret
 
     def _sign(self, params):
         """
@@ -33,37 +34,33 @@ class Request(object):
                 sign[key] = str(params[key])
 
             data = sign
-            data['secret_key'] = self.__key
+            data['secret_key'] = self.secret
             data = urlencode(sign, doseq=False, safe='', encoding=None, errors=None)
         else:
             raise TypeError('{0} should has attributes of "items"'.format(params))
 
         return hashlib.md5(data.encode('utf8')).hexdigest().upper()
 
-    def get(self, endpoint, params=None, sign=False):
+    def get(self, endpoint, params=None):
         """
         GET method to request endpoints.
         :param endpoint: String of URL for endpoints
         :param params: String of user's parameters without encryption
         :return: JSON of the response of the GET request
         """
-        if sign is True:
-            params['sign'] = self._sign(params)
 
         path = '%s/%s' % (self.__url, endpoint.lstrip('/'))
         resp = requests.get(url=path, params=params)
 
         try:
-            data = resp.json()
+            return resp.json()
         except ValueError as e:
             raise e
-        except requests.HTTPError:
+        except requests.HTTPError as e:
             if resp.status_code == '403':
                 return '用户请求过快，可能IP被屏蔽'
-        finally:
-            data = resp.content
-
-        return data
+            
+            raise e
 
     def post(self, endpoint, params=None, sign=False):
         """
@@ -72,21 +69,18 @@ class Request(object):
         :param data: User's parameters to be encrypted, usually in the format of a dict
         :return: Response of the GET request
         """
-        if sign is True:
-            params['sign'] = self._sign(params)
+        params['api_key'] = self.apikey
+        params['sign'] = self._sign(params)
 
         path = '%s/%s' % (self.__url, endpoint.lstrip('/'))
         resp = requests.post(url=path, data=params)
 
         try:
-            data = resp.json()
+            return resp.json()
         except ValueError as e:
             raise e
-        except requests.HTTPError:
+        except requests.HTTPError as e:
             if resp.status_code == '403':
                 return '用户请求过快，可能IP被屏蔽'
-        finally:
-            data = resp.content
-
-
-        return data
+            
+            raise e
