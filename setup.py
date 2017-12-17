@@ -3,7 +3,7 @@
 # Learn more: https://github.com/kennethreitz/setup.py
 
 from setuptools import setup, find_packages
-
+from okex import __version__
 
 with open('README.rst') as f:
     readme = f.read()
@@ -13,7 +13,7 @@ with open('LICENSE') as f:
 
 setup(
     name='okex',
-    version='0.1.0',
+    version=__version__,
     description='OKEX API SDK',
     long_description=readme,
     author='Bopo Wang',
