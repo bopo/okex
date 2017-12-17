@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from .context import OKExMarketAPI
+from okex.core import OKExMarketAPI
 
 import unittest
 

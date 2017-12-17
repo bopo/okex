@@ -6,6 +6,12 @@ import hashlib
 import requests
 from urllib.parse import urlencode
 
+class WebSocket(object):
+    """docstring for WebSocket"""
+    def __init__(self, arg):
+        super(WebSocket, self).__init__()
+        self.arg = arg
+        
 class Request(object):
 
     def __init__(self, url=None, key=None):

@@ -49,7 +49,7 @@ class OKExBase(object):
              '12hour'
              )
 
-    def __init__(self, url, apikey, secret):
+    def __init__(self, url, apikey, secret, wss=False):
         """
         Constructor for class of OKExBase.
         :param url: Base URL for REST API of Future
@@ -182,7 +182,7 @@ class OKExMarketAPI(OKExBase):
         return self._request.get(OKExBase.URI['price_limit'], params)
 
 
-class OKExTradeAPI(OKExBase):
+class OKExTraderAPI(OKExBase):
 
     def __init__(self, url, api_key, secret_key):
         """
