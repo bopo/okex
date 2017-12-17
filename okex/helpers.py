@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
 
-# 用于进行https请求，以及 MD5 签名的工具类
 
 import hashlib
-import requests
 from urllib.parse import urlencode
 
-class WebSocket(object):
-    """docstring for WebSocket"""
-    def __init__(self, arg):
-        super(WebSocket, self).__init__()
-        self.arg = arg
-        
+import requests
+
+
 class Request(object):
 
     def __init__(self, url=None, key=None):
@@ -35,13 +30,13 @@ class Request(object):
         if isinstance(params, dict):
             for key in sorted(params.keys()):
                 sign[key] = str(params[key])
-            
+
             data = sign
             data['secret_key'] = self.__key
-            data = urlencode(sign, doseq=False, safe='', encoding=None, errors=None) 
+            data = urlencode(sign, doseq=False, safe='', encoding=None, errors=None)
         else:
             raise TypeError('{0} should has attributes of "items"'.format(params))
-        
+
         return hashlib.md5(data.encode('utf8')).hexdigest().upper()
 
     def get(self, resource, params=None, sign=False):
@@ -53,7 +48,7 @@ class Request(object):
         """
         if sign is True:
             params['sign'] = self.__sign(params)
-        
+
         path = '%s/%s' % (self.__url, resource.lstrip('/'))
         resp = requests.get(url=path, params=params)
         data = resp.json()
@@ -69,7 +64,7 @@ class Request(object):
         """
         if sign is True:
             params['sign'] = self.__sign(params)
-        
+
         path = '%s/%s' % (self.__url, resource.lstrip('/'))
         resp = requests.post(url=path, data=params)
         data = resp.content

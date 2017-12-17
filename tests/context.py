@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from okex.core import OKExMarketAPI
+try:
+    import sys
+    import os
+
+    from okex.context import *
+    from okex.core import OKExMarketAPI, OKExTraderAPI
+except ImportError:
+    pass
+
+APIKEY = os.environ.get('APIKEY', None)
+SECRET = os.environ.get('SECRET', None)

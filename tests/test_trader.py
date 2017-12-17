@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
-
-from okex.core import OKExTraderAPI
 import unittest
+
+from .context import *
 
 
 class TraderTestSuite(unittest.TestCase):
-    """Advanced test cases."""
-    apikey = '0b72f8d4-b5dd-4b0c-b8d6-7c55c8405799'
-    secret = '31F73BBC196B0472DFFFFAA215F22B45'
-    
+    """Trader test cases."""
+
+    def setUp(self):
+        self.client = OKExTraderAPI('https://www.okex.com', APIKEY, SECRET)
+
     def test_user_info(self):
-        client = OKExTraderAPI('https://www.okex.com', self.apikey, self.secret)
-        assert client.future_user_info()
+        assert self.client.user_info()
 
 
 if __name__ == '__main__':
