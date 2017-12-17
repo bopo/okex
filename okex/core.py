@@ -191,7 +191,7 @@ class OKExTraderAPI(OKExBase):
         :param secret_key: String of SECRET KEY
         :return: None
         """
-        super(OKExTradeAPI, self).__init__(url, api_key, secret_key)
+        super(OKExTraderAPI, self).__init__(url, api_key, secret_key)
 
     # 期货全仓账户信息
     def future_user_info(self):
