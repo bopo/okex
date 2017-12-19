@@ -5,7 +5,7 @@ try:
     import os
 
     from okex.context import *
-    from okex.core import OKExMarketAPI, OKExTraderAPI
+    from okex.core import OKExAPI
 except ImportError:
     pass
 
